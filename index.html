@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Illinois Preschool for All: Program Benefits Infographic</title>
+    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Chart.js --><script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <!-- Load Inter Font --><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Tailwind Configuration (Optional but helpful for custom colors/fonts) */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'illinois-blue': '#1E3A8A',
+                        'illinois-teal': '#06B6D4',
+                        'illinois-gold': '#F59E0B',
+                        'off-white': '#F8FAFC',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+        /* Custom styling for visual effect */
+        .card {
+            box-shadow: 0 10px 15px -3px rgba(30, 58, 138, 0.1), 0 4px 6px -2px rgba(30, 58, 138, 0.05);
+            transition: transform 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-off-white font-sans text-gray-800">
+
+    <div id="app" class="max-w-7xl mx-auto p-4 sm:p-8">
+
+        <!-- Header Section - Changed text-white to text-off-white --><header class="text-center mb-12 p-6 rounded-xl bg-illinois-blue text-off-white shadow-2xl">
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-2">
+                Illinois Preschool for All
+            </h1>
+            <p class="text-xl sm:text-2xl font-light opacity-90">
+                Laying the Foundation for Lifelong Success
+            </p>
+        </header>
+
+        <!-- Core Impact Card (Highlighting Heckman's Return) --><div class="bg-white card rounded-3xl p-6 sm:p-10 mb-12 border-b-4 border-illinois-gold">
+            <div class="flex items-center space-x-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 sm:h-20 sm:w-20 text-illinois-gold flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
+                </svg>
+                <div>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold text-illinois-blue mb-2">
+                        The Return on Investment
+                    </h2>
+                    <p class="text-lg sm:text-xl text-gray-600">
+                        For every dollar invested in high-quality early childhood education, Illinois sees an estimated
+                        <strong class="text-illinois-teal font-bold">7% to 10% annual return</strong>. This is a profound investment in the state's future, economy, and reduced social costs.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Statistics Section --><div class="grid md:grid-cols-3 gap-6 mb-12">
+
+            <!-- Stat 1: Enrollment --><div class="card bg-white p-6 rounded-2xl border-l-4 border-illinois-teal shadow-md text-center">
+                <p class="text-4xl sm:text-5xl font-extrabold text-illinois-teal">82,474+</p>
+                <p class="text-lg font-semibold text-gray-600 mt-2">Children Enrolled</p>
+                <p class="text-sm text-gray-400">(2023-2024 School Year)</p>
+            </div>
+
+            <!-- Stat 2: Quality Benchmarks --><div class="card bg-white p-6 rounded-2xl border-l-4 border-illinois-teal shadow-md text-center">
+                <p class="text-4xl sm:text-5xl font-extrabold text-illinois-teal">8/10</p>
+                <p class="text-lg font-semibold text-gray-600 mt-2">Quality Standards Met</p>
+                <p class="text-sm text-gray-400">(Consistent High-Quality Program)</p>
+            </div>
+
+            <!-- Stat 3: Staff Ratio --><div class="card bg-white p-6 rounded-2xl border-l-4 border-illinois-teal shadow-md text-center">
+                <p class="text-4xl sm:text-5xl font-extrabold text-illinois-teal">1:10</p>
+                <p class="text-lg font-semibold text-gray-600 mt-2">Max Staff-to-Child Ratio</p>
+                <p class="text-sm text-gray-400">(Ensuring Personalized Attention)</p>
+            </div>
+        </div>
+
+        <!-- Dynamic Content Generation Section --><div id="dynamic-content-section" class="bg-white card rounded-3xl p-6 sm:p-10 mb-12 border-b-4 border-illinois-teal">
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-illinois-blue mb-4">
+                Deep Dive: Policy & Economic Analysis
+            </h2>
+            <p class="text-lg text-gray-600 mb-6">
+                Ask the assistant for a detailed, grounded summary of a specific economic or social impact of the Illinois Preschool for All program.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4">
+                <input type="text" id="user-query" placeholder="e.g., 'Latest legislative news on PFA funding' or 'PFA's impact on parental employment.'" class="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-illinois-teal focus:border-illinois-teal transition" />
+                <button id="generate-button" class="bg-illinois-gold text-illinois-blue font-semibold py-3 px-6 rounded-lg hover:bg-yellow-600 transition duration-200 shadow-md">
+                    Generate Analysis
+                </button>
+            </div>
+
+            <!-- Output Area --><div id="loading-indicator" class="hidden mt-6 text-center text-illinois-teal">
+                <svg class="animate-spin inline-block w-6 h-6 mr-3 text-illinois-teal" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Generating analysis and checking sources...
+            </div>
+
+            <div id="result-area" class="mt-8 pt-4 border-t border-gray-200 text-gray-800">
+                <p class="italic" id="initial-message">Click 'Generate Analysis' to get started!</p>
+            </div>
+        </div>
+        <!-- End Dynamic Content Generation Section --><!-- Outcomes Chart Section --><div class="bg-white card rounded-3xl p-6 sm:p-8 mb-12">
+            <h2 class="text-2xl sm:text-3xl font-bold text-illinois-blue mb-6 border-b pb-3">
+                Key Child Outcomes at Kindergarten Entry
+            </h2>
+            <div class="w-full h-80 sm:h-96">
+                <canvas id="outcomesChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Program Pillars/Benefits Grid --><h2 class="text-2xl sm:text-3xl font-bold text-illinois-blue mb-6 text-center">
+            How PFA Supports Children & Families
+        </h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <!-- Pillar 1: Kindergarten Readiness (Updated Content with text-off-white) --><div class="card bg-illinois-blue p-6 rounded-xl text-off-white shadow-lg flex flex-col justify-center">
+                <div class="flex items-center space-x-3 mb-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-illinois-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2h-1m0 0h-1m1 0h2m-2-3h.01M16 19h.01M12 14h.01M8 19h.01M16 14h.01M12 19h.01M8 14h.01M3 21h18v-2a2 2 0 00-2-2H5a2 2 0 00-2 2v2zM5 3h14a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z" />
+                    </svg>
+                    <p class="text-lg font-bold">School Success</p>
+                </div>
+                <p class="text-sm opacity-90">PFA provides children with research-based curriculum, certified teachers, and 12.5+ hours of instruction weekly, ensuring foundational knowledge for K-12 success.</p>
+            </div>
+
+            <!-- Pillar 2: Holistic Development (Updated Content with text-off-white) --><div class="card bg-illinois-blue p-6 rounded-xl text-off-white shadow-lg flex flex-col justify-center">
+                <div class="flex items-center space-x-3 mb-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-illinois-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    <p class="text-lg font-bold">Social & Emotional</p>
+                </div>
+                <p class="text-sm opacity-90">High-quality programs foster holistic development, including critical thinking, problem-solving, cooperation, and essential emotional coping skills through play.</p>
+            </div>
+
+            <!-- Pillar 3: Family Support (Updated Content with text-off-white) --><div class="card bg-illinois-blue p-6 rounded-xl text-off-white shadow-lg flex flex-col justify-center">
+                <div class="flex items-center space-x-3 mb-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-illinois-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                    <p class="text-lg font-bold">Economic Stability</p>
+                </div>
+                <p class="text-sm opacity-90">By offering free or subsidized full and half-day options, PFA helps stabilize families by allowing parents to remain in the workforce, training, or education.</p>
+            </div>
+
+            <!-- Pillar 4: Bridging Gaps (Updated Content with text-off-white) --><div class="card bg-illinois-blue p-6 rounded-xl text-off-white shadow-lg flex flex-col justify-center">
+                <div class="flex items-center space-x-3 mb-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-illinois-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <p class="text-lg font-bold">Equity Focused</p>
+                </div>
+                <p class="text-sm opacity-90">The program prioritizes access for 'at-risk' children, English Language Learners, and children with special needs, actively bridging opportunity and achievement gaps.</p>
+            </div>
+
+        </div>
+
+        <!-- Footer/Source Note --><footer class="text-center mt-12 p-4 text-gray-500 text-xs">
+            <p>Infographic based on data from NIEER, SRI International, and Illinois early childhood reports.</p>
+        </footer>
+
+    </div>
+
+    <script type="module">
+        // --- Firebase Initialization & Authentication (Mandatory for app context) ---
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        
+        // Global Firebase/Auth instances
+        let auth;
+        
+        // Global Constants
+        const API_MODEL = "gemini-2.5-flash-preview-09-2025";
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${API_MODEL}:generateContent?key=`;
+
+        // Global variables (from Canvas environment)
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        
+        const MAX_RETRIES = 5;
+        const initialDelay = 1000;
+
+        /**
+         * Calls the Gemini API with exponential backoff for resilience.
+         */
+        async function callGeminiAPI(systemPrompt, userQuery) {
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                // Enable Google Search grounding for up-to-date, factual information
+                tools: [{ "google_search": {} }], 
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                },
+            };
+
+            const apiUrlWithKey = API_URL; // Key is handled by Canvas environment
+            
+            for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
+                const delay = initialDelay * Math.pow(2, attempt);
+                try {
+                    const response = await fetch(apiUrlWithKey, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        return result; // Success!
+                    } else if (response.status === 429) {
+                        // Rate limit exceeded, retry after delay
+                        if (attempt < MAX_RETRIES - 1) {
+                            await new Promise(resolve => setTimeout(resolve, delay));
+                            continue;
+                        } else {
+                            throw new Error("Rate limit exceeded after multiple retries.");
+                        }
+                    } else {
+                        // Other non-retryable API errors
+                        throw new Error(`API Error: ${response.status} ${response.statusText}`);
+                    }
+                } catch (error) {
+                    // Network or other generic errors
+                    if (attempt < MAX_RETRIES - 1) {
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                        continue;
+                    } else {
+                        throw new Error(`Failed to fetch content after multiple retries: ${error.message}`);
+                    }
+                }
+            }
+            throw new Error("API call failed after all retries.");
+        }
+        
+        /**
+         * Handles the button click, calls the API, and updates the UI.
+         */
+        async function handleGenerate() {
+            const userQueryElement = document.getElementById('user-query');
+            const resultArea = document.getElementById('result-area');
+            const loadingIndicator = document.getElementById('loading-indicator');
+            const initialMessage = document.getElementById('initial-message');
+            const userQuery = userQueryElement.value.trim();
+
+            if (!userQuery) {
+                resultArea.innerHTML = '<p class="text-red-500 italic">Please enter a question to analyze.</p>';
+                if (initialMessage) initialMessage.classList.add('hidden');
+                return;
+            }
+
+            // Show loading state
+            if (initialMessage) initialMessage.classList.add('hidden');
+            resultArea.innerHTML = '';
+            loadingIndicator.classList.remove('hidden');
+
+            try {
+                const systemPrompt = "You are a policy analyst specializing in Illinois state programs. Summarize the requested information about the Illinois Preschool for All (PFA) program's economic or social impact in a detailed, professional paragraph. Base your answer strictly on the provided search results.";
+                
+                const response = await callGeminiAPI(systemPrompt, userQuery);
+
+                const candidate = response.candidates?.[0];
+
+                if (candidate && candidate.content?.parts?.[0]?.text) {
+                    const text = candidate.content.parts[0].text;
+                    let sources = [];
+                    const groundingMetadata = candidate.groundingMetadata;
+                    if (groundingMetadata && groundingMetadata.groundingAttributions) {
+                        sources = groundingMetadata.groundingAttributions
+                            .map(attribution => ({
+                                uri: attribution.web?.uri,
+                                title: attribution.web?.title,
+                            }))
+                            .filter(source => source.uri && source.title);
+                    }
+
+                    // Explicitly setting text-gray-800 for visibility
+                    let htmlContent = `<div class="p-4 bg-gray-50 rounded-lg shadow-inner text-gray-800">
+                                        <h3 class="text-xl font-bold text-illinois-teal mb-3">Analysis Result:</h3>
+                                        <p class="mb-4">${text.replace(/\n/g, '<br>')}</p>
+                                    </div>`;
+                    
+                    if (sources.length > 0) {
+                        htmlContent += '<p class="text-sm mt-4 font-semibold text-gray-700">Sources:</p>';
+                        htmlContent += '<ul class="list-disc ml-5 text-sm text-gray-600 space-y-1">';
+                        sources.forEach((source) => {
+                            htmlContent += `<li><a href="${source.uri}" target="_blank" class="text-illinois-blue hover:text-illinois-teal underline transition">${source.title}</a></li>`;
+                        });
+                        htmlContent += '</ul>';
+                    } else {
+                        htmlContent += '<p class="text-sm mt-4 italic text-gray-500">No external sources were cited for this response.</p>';
+                    }
+                    
+                    resultArea.innerHTML = htmlContent;
+
+                } else {
+                    resultArea.innerHTML = '<p class="text-red-500 italic">Could not generate content. Please try a different query.</p>';
+                    console.error('API response structure was unexpected:', response);
+                }
+
+            } catch (error) {
+                resultArea.innerHTML = `<p class="text-red-500 italic">Error: ${error.message}</p>`;
+                console.error('Gemini API call failed:', error);
+            } finally {
+                loadingIndicator.classList.add('hidden');
+            }
+        }
+
+
+        // --- Document Ready / Setup ---
+        window.onload = function() {
+            // 1. Initialize Firebase/Auth
+            setLogLevel('debug'); // Enable Firestore logging
+            try {
+                const app = initializeApp(firebaseConfig);
+                auth = getAuth(app);
+                if (initialAuthToken) {
+                    signInWithCustomToken(auth, initialAuthToken);
+                } else {
+                    signInAnonymously(auth);
+                }
+                console.log("Firebase and Auth initialized.");
+            } catch (e) {
+                console.error("Firebase initialization failed:", e);
+            }
+
+            // 2. Chart.js initialization (existing code)
+            const ctx = document.getElementById('outcomesChart').getContext('2d');
+
+            const data = {
+                labels: [
+                    'Vocabulary Skills',
+                    'Social Skills',
+                    'Attention/Persistence',
+                    'Reduction in Problem Behaviors'
+                ],
+                datasets: [{
+                    label: 'Improvement Index (%)',
+                    data: [85, 75, 60, 40], // Illustrative data based on qualitative findings from Source 3.1
+                    backgroundColor: [
+                        '#1E3A8A', // Blue
+                        '#06B6D4', // Teal
+                        '#F59E0B', // Gold
+                        '#10B981'  // Green (for reduction)
+                    ],
+                    borderRadius: 8,
+                    borderSkipped: false,
+                }]
+            };
+
+            const config = {
+                type: 'bar',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y', // Horizontal Bar Chart
+                    plugins: {
+                        legend: {
+                            display: false,
+                        },
+                        title: {
+                            display: false,
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.x !== null) {
+                                        label += context.parsed.x + '%';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Positive Impact Index (%)'
+                            },
+                            grid: {
+                                color: 'rgba(200, 200, 200, 0.2)',
+                            }
+                        },
+                        y: {
+                            grid: {
+                                display: false,
+                            }
+                        }
+                    }
+                }
+            };
+
+            const outcomesChart = new Chart(ctx, config);
+        
+            // 3. Attach event listener
+            const generateButton = document.getElementById('generate-button');
+            if (generateButton) {
+                generateButton.addEventListener('click', handleGenerate);
+                // Allow submission by pressing Enter in the input field
+                document.getElementById('user-query').addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter') {
+                        handleGenerate();
+                    }
+                });
+            }
+        };
+    </script>
+</body>
+</html>
